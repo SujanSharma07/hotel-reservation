@@ -13,4 +13,7 @@ urlpatterns = [
         views.cancelbooking,
         name="cancelbooking",
     ),
+    path("paypal-payment/", views.paypal_payment, name="paypal_payment"),
+    path("execute-payment/", views.execute_payment, name="execute_payment"),
+    path("payment-cancel/", views.payment_cancel, name="payment_cancel"),
 ]

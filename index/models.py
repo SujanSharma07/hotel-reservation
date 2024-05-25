@@ -8,11 +8,6 @@
 from django.db import models
 
 
-
-
-
-
-
 class Driver(models.Model):
     driver_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30, blank=True, null=True)
@@ -22,14 +17,7 @@ class Driver(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'driver'
-
-
-
-
-
-
-
+        db_table = "driver"
 
 
 class Guide(models.Model):
@@ -42,7 +30,8 @@ class Guide(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'guide'
+        db_table = "guide"
+
 
 class Hotels(models.Model):
     hotel_id = models.AutoField(primary_key=True)
@@ -51,47 +40,43 @@ class Hotels(models.Model):
     city = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
     rating = models.CharField(max_length=10)
-    photo = models.ImageField(upload_to='pics', default=0)
+    photo = models.ImageField(upload_to="pics", default=0)
     price = models.IntegerField(default=0)
 
-    description = models.TextField(default='hotel')
+    description = models.TextField(default="hotel")
 
     class Meta:
         managed = True
-        db_table = 'hotels'
-
-
-
-
-
+        db_table = "hotels"
 
 
 class Pickup(models.Model):
-    cust_id = models.IntegerField( primary_key=True)
-    driver_id = models.ForeignKey('Driver',on_delete=models.CASCADE)
+    cust_id = models.IntegerField(primary_key=True)
+    driver_id = models.ForeignKey("Driver", on_delete=models.CASCADE)
     address = models.CharField(max_length=100, blank=True, null=True)
     time = models.TimeField(default=0)
     date = models.DateField(default=0)
 
     class Meta:
         managed = True
-        db_table = 'pickup'
+        db_table = "pickup"
+
 
 class Guests(models.Model):
     cust_id = models.IntegerField(primary_key=True)
-    hotel_id = models.ForeignKey('Hotels', on_delete=models.CASCADE)
+    hotel_id = models.ForeignKey("Hotels", on_delete=models.CASCADE)
     cust_name = models.CharField(max_length=30)
     mob_no = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = True
-        db_table = 'guests'
+        db_table = "guests"
 
 
 class Tourist(models.Model):
-    cust_id = models.IntegerField( primary_key=True)
-    guide_id = models.ForeignKey('Guide', on_delete=models.CASCADE)
+    cust_id = models.IntegerField(primary_key=True)
+    guide_id = models.ForeignKey("Guide", on_delete=models.CASCADE)
 
     class Meta:
         managed = True
-        db_table = 'tourist'
+        db_table = "tourist"
