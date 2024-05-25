@@ -32,20 +32,21 @@
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
 									<li class="active"><a href="/">Home</a></li>
-                                    {% if user.is_authenticated %}
-                                    <li> <strong> Hello,  {{ user.username }}</strong></li>
-                                        <li><a href="booking/mybookings">mybookings</a></li>
-                                    <li><a href="accounts/logout">logout</a></li>
+									<li><a href="search/about">About us</a></li>
+                                    <li><a href="search/contact">Contact</a></li>
+									{% if user.is_authenticated %}
+
+                                    <li><a href="booking/mybookings">My Bookings</a></li>
+                                    <li><a href="accounts/logout">Logout</a></li>
                                     {% else %}
-                                    <li><a href="accounts/register">register</a></li>
-                                    <li><a href="accounts/login">login</a></li>
-                                        <li><a href="accounts/emailverf">Email verf</a></li>
+                                    <li><a href="accounts/register">Register</a></li>
+                                    <li><a href="accounts/login">Login</a></li>
+                                    <li><a href="accounts/emailverf">Email verification</a></li>
                                     {% endif %}
-                                     <li><a href="search/about">about us</a></li>
-                                     <li><a href="search/contact">contact</a></li>
+                                     
 								</ul>
 							</nav>
-
+							
 
 							<!-- Hamburger -->
 
@@ -59,6 +60,10 @@
 			</div>
 		</div>
 		<div class="header_social d-flex flex-row align-items-center justify-content-start">
+			{% if user.is_authenticated %}
+				<strong> Hello,  {{ user.username }}</strong>
+			{% endif %}
+
 			<ul class="d-flex flex-row align-items-start justify-content-start">
 
 
@@ -75,17 +80,21 @@
 			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
 		</div>
 		<div class="menu_content">
+			{% if user.is_authenticated %}
+				Hello, {{user.username}}
+			{% endif %}
+
 			<ul>
 				<li><a href="/">Home</a></li>
-				<li><a href="{% static 'about.html' %}">About us</a></li>
+				<li><a href="search/about">About us</a></li>
+				<li><a href="search/contact">Contact</a></li>
                 {% if user.is_authenticated %}
-                                    <li> Hello, {{ user.username }}</li>
-                                    <li><a href="booking/mybookings">mybookings</a></li>
-                                    <li><a href="accounts/logout">logout</a></li>
-                                    {% else %}
-                                    <li><a href="accounts/register">register</a></li>
-                                    <li><a href="accounts/login">login</a></li>
-                                    {% endif %}
+					<li><a href="booking/mybookings">Mybookings</a></li>
+					<li><a href="accounts/logout">Logout</a></li>
+					{% else %}
+					<li><a href="accounts/register">Register</a></li>
+					<li><a href="accounts/login">Login</a></li>
+					{% endif %}
 			</ul>
 		</div>
 		<div class="menu_social">
@@ -171,7 +180,7 @@
 						<div class="home_search_content">
 							<form action="search/" method='GET'>
 								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" name="city" placeholder="City"required="required">
+									<input type="text" class="search_input search_input_1" name="city" placeholder="City">
                                     <!-- <header>from</header>
 									<input type="date" class="search_input search_input_4" name="arrival" placeholder="Arrival">
                                     <header>to</header>

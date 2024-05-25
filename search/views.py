@@ -14,6 +14,8 @@ def search(request):
             hotels = Hotels.objects.filter(city__icontains=city )
         if budget:
             hotels = hotels.filter(price__lte=budget)
+        if not city and not budget:
+            hotels=Hotels.objects.all() or {}
         return render(request ,'search.html',{ 'hotels' : hotels})
 
 
