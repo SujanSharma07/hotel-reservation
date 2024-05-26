@@ -139,7 +139,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 EMAIL_HOST = "live.smtp.mailtrap.io"
-EMAIL_HOST_USER = "api"
+EMAIL_HOST_USER = "donotreply@stoneonfire.com.au"
 EMAIL_HOST_PASSWORD = "f64a801fc5c122b8eb449f368931329c"
 EMAIL_PORT = "587"
 EMAIL_USE_TLS = True

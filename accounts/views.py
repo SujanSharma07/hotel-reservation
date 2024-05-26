@@ -17,7 +17,7 @@ def resetpass(request):
         email = request.POST["email"]
         request.session["otp1"] = otp1
         subject = "Thank you for registering to our site"
-        message = str(otp1)
+        message = f"Please Use following OTP to verify your email. {otp1}, Please do not share this OTP to anyone"
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [
             email,

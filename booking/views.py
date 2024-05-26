@@ -2,6 +2,7 @@ import datetime
 
 import paypalrestsdk
 from django.conf import settings
+from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -98,8 +99,16 @@ def mybookings(request):
 
 
 def cancelbooking(request, bid):
-    booking = Booking.objects.filter(id=bid)
-    booking.delete()
+    booking = Booking.objects.filter(id=bid).first()
+    if booking:
+        if booking.payment_status == "Success":
+            messages.info(
+                request,
+                "Your booking has been canceled. Our staff will contact you for refund and policies.",
+            )
+        booking.delete()
+    else:
+        messages.error(request, "Booking not found.")
     return redirect("/booking/mybookings")
 
 
