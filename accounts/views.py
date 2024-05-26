@@ -95,6 +95,7 @@ def register(request):
                 recipient_list = [
                     email,
                 ]
+                print (recipient_list)
                 send_mail(subject, message, email_from, recipient_list)
                 user.save()
                 print("created")
